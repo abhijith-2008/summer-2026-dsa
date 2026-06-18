@@ -1,29 +1,58 @@
 #include <stdio.h>
 
-int main() {
-    int arr[]={1,2,3,4,5,6,7};
-    int n=7;
+int main()
+{
+    int n;
+
+    printf("Enter size of array: ");
+    scanf("%d",&n);
+
+    int arr[n];
+
+    printf("Enter elements in sorted order:\n");
+
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+
+    int target;
+
+    printf("Enter element to search: ");
+    scanf("%d",&target);
+
     int low=0;
     int high=n-1;
-    
-    int target=10;
-    while(low<=high){
+    int found=0;
+
+    while(low<=high)
+    {
         int mid=(low+high)/2;
-        if(target==arr[mid]){
-            printf("element found at index %d",mid);
-            return 0;
+
+        if(arr[mid]==target)
+        {
+            printf("Element found at index %d",mid);
+
+            found=1;
+
+            break;
         }
-        else if(target>arr[mid]){
+
+        else if(target > arr[mid])
+        {
             low=mid+1;
-            
         }
-        else if(target<arr[mid]){
+
+        else
+        {
             high=mid-1;
-            
         }
-        
     }
-    printf("Not Found");
+
+    if(found==0)
+    {
+        printf("Element not found");
+    }
 
     return 0;
 }
